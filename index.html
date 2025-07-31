@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <button id="google-login">Login with Google</button>
+  <button id="tiktok-login">Login with TikTok</button>
+
+  <div id="g_id_onload"
+       data-client_id="YOUR_GOOGLE_CLIENT_ID"
+       data-callback="handleCredentialResponse">
+  </div>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    function handleCredentialResponse(response) {
+      console.log('Google credential response', response);
+    }
+
+    document.getElementById('google-login').addEventListener('click', function() {
+      google.accounts.id.prompt();
+    });
+
+    document.getElementById('tiktok-login').addEventListener('click', function() {
+      window.location.href = 'https://www.tiktok.com/login/redirect?redirect_url=YOUR_CALLBACK_URL';
+    });
+  </script>
+</body>
+</html>
